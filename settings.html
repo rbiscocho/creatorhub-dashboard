@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CreatorHub – Settings</title>
+  <style>
+    :root {
+      --bg: #0f172a; --card: #1e293b; --border: #334155; --text: #e2e8f0; --muted: #94a3b8;
+      --primary: #38bdf8; --green: #22c55e; --yellow: #f59e0b; --pink: #ec4899; --purple: #a78bfa; --red: #ef4444;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); display: flex; min-height: 100vh; }
+    .sidebar { width: 250px; background: #0b1220; border-right: 1px solid var(--border); padding: 24px 16px; position: fixed; height: 100vh; }
+    .logo { font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 36px; padding-left: 8px; }
+    .nav-item { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 10px; color: var(--muted); text-decoration: none; font-size: 0.95rem; margin-bottom: 4px; }
+    .nav-item:hover, .nav-item.active { background: #1e293b; color: var(--text); }
+    .nav-item.active { background: rgba(56,189,248,0.12); color: var(--primary); }
+    .main { margin-left: 250px; flex: 1; padding: 24px 32px; max-width: 900px; }
+    .topbar { margin-bottom: 28px; }
+    .topbar h1 { font-size: 1.5rem; font-weight: 600; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin-bottom: 24px; }
+    .card h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: #0f172a; border: 1px solid var(--border); border-radius: 8px;
+      padding: 10px 14px; color: var(--text); font-size: 0.95rem; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: var(--primary); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn { background: var(--primary); color: #0f172a; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+    .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .toggle-row:last-child { border-bottom: none; }
+    .toggle { width: 44px; height: 24px; background: #334155; border-radius: 12px; position: relative; cursor: pointer; }
+    .toggle.on { background: var(--primary); }
+    .toggle::after { content: ''; position: absolute; width: 18px; height: 18px; background: white; border-radius: 50%; top: 3px; left: 3px; transition: 0.2s; }
+    .toggle.on::after { left: 23px; }
+    .section-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">🎬 CreatorHub</div>
+    <a href="dashboard.html" class="nav-item">📊 Dashboard</a>
+    <a href="bookings.html" class="nav-item">📅 Bookings</a>
+    <a href="creators.html" class="nav-item">🎥 Creators</a>
+    <a href="clients.html" class="nav-item">👥 Clients</a>
+    <a href="reports.html" class="nav-item">📈 Reports</a>
+    <a href="settings.html" class="nav-item active">⚙️ Settings</a>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <h1>Settings</h1>
+    </div>
+
+    <div class="card">
+      <h2>Agency Profile</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Agency Name</label>
+          <input type="text" value="CreatorHub Agency">
+        </div>
+        <div class="form-group">
+          <label>Contact Email</label>
+          <input type="email" value="hello@creatorhub.ph">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="text" value="+63 917 123 4567">
+        </div>
+        <div class="form-group">
+          <label>Timezone</label>
+          <select>
+            <option>Asia/Manila (PHT)</option>
+            <option>Asia/Singapore</option>
+            <option>UTC</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" value="BGC, Taguig, Metro Manila, Philippines">
+      </div>
+      <button class="btn">Save Changes</button>
+    </div>
+
+    <div class="card">
+      <h2>Notification Preferences</h2>
+      <p class="section-desc">Choose which alerts you want to receive.</p>
+      <div class="toggle-row">
+        <div>
+          <div style="font-weight:600">New Booking Requests</div>
+          <div style="font-size:0.8rem;color:var(--muted)">Get notified when a client submits a booking</div>
+        </div>
+        <div class="toggle on"></div>
+      </div>
+      <div class="toggle-row">
+        <div>
+          <div style="font-weight:600">Creator Acceptance</div>
+          <div style="font-size:0.8rem;color:var(--muted)">When a creator accepts or declines a booking</div>
+        </div>
+        <div class="toggle on"></div>
+      </div>
+      <div class="toggle-row">
+        <div>
+          <div style="font-weight:600">Payment Received</div>
+          <div style="font-size:0.8rem;color:var(--muted)">Notify when client payment is confirmed</div>
+        </div>
+        <div class="toggle on"></div>
+      </div>
+      <div class="toggle-row">
+        <div>
+          <div style="font-weight:600">Weekly Summary</div>
+          <div style="font-size:0.8rem;color:var(--muted)">Receive a weekly performance report every Monday</div>
+        </div>
+        <div class="toggle"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Booking Rules</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Minimum Lead Time (hours)</label>
+          <input type="number" value="24">
+        </div>
+        <div class="form-group">
+          <label>Default Soft Lock Duration (minutes)</label>
+          <input type="number" value="30">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Cancellation Window (hours before)</label>
+          <input type="number" value="48">
+        </div>
+        <div class="form-group">
+          <label>Currency</label>
+          <select>
+            <option>USD ($)</option>
+            <option>PHP (₱)</option>
+            <option>SGD (S$)</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn">Save Rules</button>
+    </div>
+
+    <div class="card">
+      <h2>Team Members</h2>
+      <p class="section-desc">Manage who has access to the dashboard.</p>
+      <table style="width:100%;border-collapse:collapse;font-size:0.9rem;margin-bottom:16px">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:10px 0;color:var(--muted);border-bottom:1px solid var(--border)">Name</th>
+            <th style="text-align:left;padding:10px 0;color:var(--muted);border-bottom:1px solid var(--border)">Email</th>
+            <th style="text-align:left;padding:10px 0;color:var(--muted);border-bottom:1px solid var(--border)">Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:12px 0;border-bottom:1px solid var(--border)">Anna Mendoza</td>
+            <td style="padding:12px 0;border-bottom:1px solid var(--border)">anna@creatorhub.ph</td>
+            <td style="padding:12px 0;border-bottom:1px solid var(--border)">Admin</td>
+          </tr>
+          <tr>
+            <td style="padding:12px 0;border-bottom:1px solid var(--border)">Carlo Santos</td>
+            <td style="padding:12px 0;border-bottom:1px solid var(--border)">carlo@creatorhub.ph</td>
+            <td style="padding:12px 0;border-bottom:1px solid var(--border)">Producer</td>
+          </tr>
+          <tr>
+            <td style="padding:12px 0">Mia Reyes</td>
+            <td style="padding:12px 0">mia@creatorhub.ph</td>
+            <td style="padding:12px 0">Manager</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-outline">+ Invite Member</button>
+    </div>
+  </main>
+</body>
+</html>
